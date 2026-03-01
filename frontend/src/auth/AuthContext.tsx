@@ -87,7 +87,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const register = useCallback(async (email: string, password: string, name: string) => {
     const res = await api.post('/auth/register', { email, password, name })
-    const { access_token, user_id, role } = res.data
+    const { access_token, user_id } = res.data
     api.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
     const u: User = { id: user_id, email, name, role: 'user' }
     persist(access_token, 'user', u)

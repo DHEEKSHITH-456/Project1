@@ -33,12 +33,7 @@ function ProtectedUser({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
-function RedirectIfAuth() {
-  const { token, role } = useAuth()
-  if (!token) return null
-  if (role === 'admin') return <Navigate to="/admin" replace />
-  return <Navigate to="/user" replace />
-}
+
 
 export default function App() {
   return (
